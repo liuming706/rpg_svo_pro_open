@@ -1,0 +1,20 @@
+<launch>
+  <!-- SVO -->
+  <node pkg="svo_ros" type="svo_node" name="svo" clear_params="true" output="screen">
+    <!-- Camera topic to subscribe to -->
+    <param name="cam0_topic" value="/bridge/sensor/camera/stereo_left/image/raw" type="str" />
+    <param name="cam1_topic" value="/bridge/sensor/camera/stereo_right/image/raw" type="str" />
+	
+    <!-- Imu topic to subscribe to -->
+    <param name="imu_topic" value="/bridge/sensor/imu/orin" type="str" />
+    <param name="calib_file" value="$(find svo_ros)/param/calib/webots_stereo.yaml" type="str" />
+
+    <rosparam file="$(find svo_ros)/param/pinhole.yaml" />
+    <rosparam file="$(find svo_ros)/param/frontend_imu/webots_stereo_imu.yaml" />
+
+  </node>
+
+  <!-- RVIZ + SVO GUI -->
+  <node name="vis" pkg="rviz" type="rviz" args=" -d $(find svo_ros)/rviz_config.rviz" />
+  <node name="svo_gui" pkg="rqt_gui" type="rqt_gui" args="-s rqt_svo.svo.Svo --args --topic svo" />
+</launch>

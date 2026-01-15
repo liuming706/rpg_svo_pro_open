@@ -75,6 +75,7 @@ We provide two launch files for [EuRoC](http://projects.asl.ethz.ch/datasets/dok
 ```sh
 roslaunch svo_ros euroc_mono_frontend_imu.launch
 roslaunch svo_ros euroc_stereo_frontend_imu.launch
+roslaunch svo_ros webots_stereo_frontend_imu.launch
 ```
 
 These launch files read the parameters from `param/euroc_mono_imu.yaml` and `param/euroc_stereo_imu.yaml`. The parameters are not necessarily optimal for every sequence, but should be enough as a good starting point.
