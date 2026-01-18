@@ -75,6 +75,9 @@ We provide two launch files for [EuRoC](http://projects.asl.ethz.ch/datasets/dok
 ```sh
 roslaunch svo_ros euroc_mono_frontend_imu.launch
 roslaunch svo_ros euroc_stereo_frontend_imu.launch
+# noetic
+export XAUTHORITY=/home/ubt/.Xauthority
+xhost +SI:localuser:root
 roslaunch svo_ros webots_stereo_frontend_imu.launch
 ```
 
